@@ -1,22 +1,22 @@
 public class EmployeeStatsData {
 
-    private static final String IT_DEPARTMENT = "IT";
-    private static final String SUPPORT_DEPARTMENT = "Support";
-    private static final String MANAGEMENT_DEPARTMENT = "Management";
+    public static final String IT_DEPARTMENT = "IT";
+    public static final String SUPPORT_DEPARTMENT = "Support";
+    public static final String MANAGEMENT_DEPARTMENT = "Management";
 
     public static int calculateAverageSalary(Employee[] employees) {
         int salarySum = 0;
-        for (int i = 0; i < employees.length; i++) {
-            salarySum += employees[i].getSalary();
+        for (Employee employee : employees) {
+            salarySum += employee.getSalary();
         }
         return salarySum / employees.length;
     }
 
     public static int findMinSalary(Employee[] employees) {
         int minSalary = employees[0].getSalary();
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() < minSalary) {
-                minSalary = employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getSalary() < minSalary) {
+                minSalary = employee.getSalary();
             }
         }
         return minSalary;
@@ -24,41 +24,22 @@ public class EmployeeStatsData {
 
     public static int findMaxSalary(Employee[] employees) {
         int maxSalary = employees[0].getSalary();
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() > maxSalary) {
-                maxSalary = employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getSalary() > maxSalary) {
+                maxSalary = employee.getSalary();
             }
         }
         return maxSalary;
     }
 
-    public static int countItEmployees(Employee[] employees) {
-        int itEmployeesCounter = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment().equalsIgnoreCase(IT_DEPARTMENT)) {
-                itEmployeesCounter++;
+    public static int countEmployees(Employee[] employees, String departmentType) {
+        int employeesCounter = 0;
+        for (Employee employee : employees) {
+            if (employee.getDepartment().equalsIgnoreCase(departmentType)) {
+                employeesCounter++;
             }
         }
-        return itEmployeesCounter;
+        return employeesCounter;
     }
 
-    public static int countSupportEmployees(Employee[] employees) {
-        int supportEmployeesCounter = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment().equalsIgnoreCase(SUPPORT_DEPARTMENT)) {
-                supportEmployeesCounter++;
-            }
-        }
-        return supportEmployeesCounter;
-    }
-
-    public static int countManagementEmployees(Employee[] employees) {
-        int managementEmployeesCounter = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment().equalsIgnoreCase(MANAGEMENT_DEPARTMENT)) {
-                managementEmployeesCounter++;
-            }
-        }
-        return managementEmployeesCounter;
-    }
 }
